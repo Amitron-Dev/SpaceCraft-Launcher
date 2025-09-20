@@ -1,22 +1,29 @@
+/* =========================================
+   Layout général
+========================================= */
 .settings .container {
     display: flex;
     height: 100%;
 }
 
+/* =========================================
+   Navigation
+========================================= */
 .nav-settings {
     width: 20%;
     height: 100%;
     background: var(--background);
     display: flex;
-    align-items: center;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     font-size: 2.5rem;
 }
 
 .nav-settings p {
-    font-size: 60%;
+    font-size: 0.6em;
     margin-top: 80px;
+    opacity: 0.8;
 }
 
 .nav-box {
@@ -27,25 +34,35 @@
 }
 
 .nav-box #save {
-    border: solid 4px var(--background-element);
+    border: 4px solid var(--background-element);
     margin: 3rem;
 }
 
 .nav-settings-btn {
-    font-size: 50%;
-    border: solid 4px var(--element-color);
+    font-size: 0.5em;
+    border: 4px solid var(--element-color);
     padding: 5px 10px;
     border-radius: 10px;
     width: 70%;
     text-align: center;
     margin: 0.5rem 0;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-settings-btn:hover {
+    background: var(--element-color);
+    color: var(--background);
 }
 
 .active-settings-BTN {
     background: var(--element-color);
+    color: var(--background);
 }
 
+/* =========================================
+   Container principal
+========================================= */
 .container-settings {
     position: absolute;
     display: flex;
@@ -56,7 +73,13 @@
     height: calc(100% - 26px);
     opacity: 0;
     pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+}
 
+.active-container-settings {
+    opacity: 1;
+    z-index: 1;
+    pointer-events: all;
 }
 
 .settings-elements-box {
@@ -65,16 +88,12 @@
     border-radius: 10px;
     padding: 1.5rem 2rem;
     margin: 0.5rem;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .setting-text {
     font-size: 0.8rem;
-}
-
-.active-container-settings {
-    opacity: 1;
-    z-index: 1;
-    pointer-events: all;
+    opacity: 0.9;
 }
 
 .titre-tab {
@@ -88,8 +107,10 @@
     text-align: center;
     background: var(--background-transparent);
     color: var(--color);
+    font-weight: 600;
 }
 
+/* Flex utilities */
 .settings-elements {
     margin-top: 1.5rem;
     display: flex;
@@ -105,11 +126,9 @@
     justify-content: space-evenly;
 }
 
-/*******************************************************************************
- *                                                                             *
- * account tab                                                                 *
- *                                                                             *
- ******************************************************************************/
+/* =========================================
+   Accounts
+========================================= */
 .accounts-list {
     max-height: 90%;
     display: flex;
@@ -120,18 +139,23 @@
 
 .account {
     background: var(--background-element);
-    border: solid 4px var(--background-element);
+    border: 4px solid var(--background-element);
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: calc(400px - 8px);
-    height: calc(100px - 8px);
+    width: 392px; /* équivalent à calc(400px - 8px) */
+    height: 92px; /* équivalent à calc(100px - 8px) */
     margin: 1rem;
     border-radius: 15px;
+    transition: border 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.account:hover {
+    transform: translateY(-3px);
 }
 
 .account-select {
-    border: solid 4px var(--element-color);
+    border-color: var(--element-color);
 }
 
 .accounts-list #add {
@@ -139,13 +163,18 @@
     cursor: pointer;
 }
 
-.add-profile {
+.add-profile,
+.delete-profile {
     width: 70px;
     height: 70px;
     font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 15px;
+}
+
+.add-profile {
     pointer-events: none;
 }
 
@@ -157,63 +186,53 @@
 .profile-image {
     width: 70px;
     height: 70px;
-    background: url(../../images/default/setve.png);
-    background-size: cover;
+    background: url(../../images/default/setve.png) center/cover;
     border-radius: 15px;
-    pointer-events: none;
     image-rendering: pixelated;
+    pointer-events: none;
 }
 
 .profile-infos {
     text-align: center;
     width: 10rem;
     pointer-events: none;
-
 }
 
-.profile-pseudo {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 1.5rem;
-    pointer-events: none;
-
-}
-
+.profile-pseudo,
 .profile-uuid {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     pointer-events: none;
+}
 
+.profile-pseudo {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .delete-profile {
-    width: 70px;
-    height: 70px;
     background: var(--background-transparent);
-    border-radius: 15px;
-    font-size: 3rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #ff2c2c;
     cursor: pointer;
+    transition: background 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.delete-profile:hover {
+    background: rgba(255,44,44,0.1);
+    transform: scale(1.1);
 }
 
 .delete-profile-icon {
     pointer-events: none;
 }
 
-/*******************************************************************************
- *                                                                             *
- * java tab                                                                    *
- *                                                                             *
- ******************************************************************************/
-
+/* =========================================
+   Java tab
+========================================= */
 .memory-slider {
     position: relative;
-    margin: 0 1.5rem 0 0;
+    margin-right: 1.5rem;
     height: 18px;
     width: 50%;
     user-select: none;
@@ -221,8 +240,6 @@
 
 .slider-touch-left,
 .slider-touch-right {
-    box-sizing: border-box;
-    display: block;
     position: absolute;
     height: 18px;
     width: 18px;
@@ -236,26 +253,25 @@
     height: 10px;
     background: #bbb;
     border: 4px solid var(--element-color);
-    transition: background-color .2s, border .2s;
     border-radius: 18px;
     cursor: pointer;
+    transition: background-color 0.2s, border 0.2s;
 }
 
 .slider-touch-left span:after,
 .slider-touch-right span:after {
     content: attr(value);
     color: var(--element-color);
-    font: normal normal bold 12px/18px Poppins;
+    font: bold 12px/18px Poppins, sans-serif;
     white-space: nowrap;
-    pointer-events: none;
     position: absolute;
     top: -20px;
     left: 83%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
+    pointer-events: none;
 }
 
 .slider-line {
-    box-sizing: border-box;
     position: absolute;
     width: calc(100% - 18px);
     left: 9px;
@@ -263,9 +279,9 @@
     height: 4px;
     border-radius: 4px;
     background-color: #f5f5f5;
-    transition: background-color .2s;
-    z-index: 0;
     overflow: hidden;
+    transition: background-color 0.2s;
+    z-index: 0;
 }
 
 .slider-line span {
@@ -273,7 +289,7 @@
     height: 100%;
     width: 0%;
     background: var(--element-color);
-    transition: background-color .2s;
+    transition: width 0.2s;
 }
 
 .ram-info-block {
@@ -281,12 +297,17 @@
     color: var(--color);
 }
 
-.java-path-input-text {
+.java-path-input-text,
+.input-resolution,
+.input-max-files {
     background: var(--shadow);
     border: none;
     color: var(--color);
     padding: 0.5rem 1rem;
     border-radius: 15px;
+}
+
+.java-path-input-text {
     width: 50%;
 }
 
@@ -299,30 +320,34 @@
     align-items: center;
 }
 
-.java-path-btn {
+.java-path-btn,
+.size-btn,
+.max-files-btn {
     padding: 0.3rem 1rem;
     background: var(--element-color);
     border-radius: 15px;
     margin: 0 1rem;
     cursor: pointer;
+    transition: background 0.2s ease-in-out;
 }
 
-/*******************************************************************************
- *                                                                             *
- * resolution tab                                                              *
- *                                                                             *
- ******************************************************************************/
+.java-path-btn:hover,
+.size-btn:hover,
+.max-files-btn:hover {
+    background: var(--background);
+    color: var(--element-color);
+    border: 1px solid var(--element-color);
+}
+
+/* =========================================
+   Resolution tab
+========================================= */
 .input-size-element {
     display: flex;
     align-items: center;
 }
 
 .input-resolution {
-    background: var(--shadow);
-    border: none;
-    color: var(--color);
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
     text-align: center;
     width: 6rem;
 }
@@ -332,41 +357,17 @@
 }
 
 .size-cross:before {
-    font: normal normal bold 20px Icons;
+    font: bold 20px Icons;
     content: "\e90e";
 }
 
-.size-btn {
-    padding: 0.3rem 1rem;
-    background: var(--element-color);
-    border-radius: 15px;
-    margin: 0 1rem;
-    cursor: pointer;
-}
-
-/*******************************************************************************
- *                                                                             *
- * Launcher tab                                                                *
- *                                                                             *
- ******************************************************************************/
-
+/* =========================================
+   Launcher tab
+========================================= */
 .input-max-files {
-    background: var(--shadow);
-    border: none;
-    color: var(--color);
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
     text-align: center;
     width: 4rem;
     margin-right: 1rem;
-}
-
-.max-files-btn {
-    padding: 0.3rem 1rem;
-    background: var(--element-color);
-    border-radius: 15px;
-    margin: 0 1rem;
-    cursor: pointer;
 }
 
 .theme-btn {
@@ -374,6 +375,11 @@
     padding: calc(0.1rem + 4px) calc(1.5rem + 4px);
     border-radius: 15px;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out, border 0.2s ease-in-out;
+}
+
+.theme-btn:hover {
+    transform: scale(1.05);
 }
 
 .theme-btn-clair {
@@ -406,8 +412,14 @@
     border-radius: 15px;
     padding: 1rem;
     cursor: pointer;
+    transition: border 0.2s ease-in-out, background 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+    background: var(--element-color);
+    color: var(--background);
 }
 
 .active-close {
-    border: 4px solid var(--element-color);
+    border-color: var(--element-color);
 }

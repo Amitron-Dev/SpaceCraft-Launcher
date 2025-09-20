@@ -6,12 +6,14 @@
 }
 
 .login-tabs {
-    position: absolute;
-    padding: 15px;
-    background: var(--background);
+    position: relative;
+    /* Changed from absolute to relative to simplify positioning */
+    padding: 2rem;
+    background: var(--background-element);
     border-radius: 15px;
     text-align: center;
     min-width: 40%;
+    box-shadow: 0px 4px 15px var(--shadow);
 }
 
 .login-home,
@@ -22,29 +24,68 @@
 }
 
 .login-text {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
 }
 
 .connect,
 .cancel {
     background: none;
     color: var(--color);
-    border: solid 4px var(--element-color);
-    border-radius: 10px;
-    padding: 0.3rem 4rem;
+    border: solid 2px var(--element-color);
+    border-radius: 15px;
+    padding: 0.5rem 3rem;
     font-size: inherit;
     font-weight: bold;
-    margin: 15px 10px;
+    margin: 1rem 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.connect:hover {
+    background: var(--element-color);
+    color: var(--background);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px var(--shadow);
+}
+
+.cancel:hover {
+    background: var(--background);
+    color: var(--element-color);
+}
+
+.input-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .input-login .email,
 .input-login .password,
 .A2F {
     color: var(--color);
-    background: none;
+    background: var(--background);
+    border: none;
+    border-radius: 15px;
+    width: 80%;
+    padding: 0.8rem 1rem;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    box-shadow: inset 0 0 5px var(--shadow);
+    transition: var(--transition);
+}
+
+.input-login .email:focus,
+.input-login .password:focus,
+.A2F:focus {
     border: solid 2px var(--element-color);
-    border-radius: 30px;
-    width: 50%;
-    padding: 0.4rem 1rem;
-    margin-top: 10px;
+    background: var(--background-element);
+}
+
+.input-login .email::placeholder,
+.input-login .password::placeholder,
+.A2F::placeholder {
+    color: var(--color);
+    opacity: 0.5;
 }

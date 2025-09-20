@@ -3,13 +3,14 @@
 @import 'panels/login.css';
 @import 'panels/home.css';
 @import 'panels/settings.css';
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
 
 body {
     margin: 0;
     padding: 0;
     user-select: none;
     color: var(--color);
-    font-family: 'Poppins';
+    font-family: 'Alan Sans';
     font-weight: bolder;
 }
 
